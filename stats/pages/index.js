@@ -9,6 +9,7 @@ const App = () => (
             </p>
         </header>
 
+
         <style jsx global>{`
             body {
                 display: block;
