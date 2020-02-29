@@ -1,28 +1,55 @@
-import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
 
 function Questions() {
-    const [question, setQuestion] = React.useState(1);
-    const [progress, setProgress] = React.useState(1);
-
-
-    var data = [{
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+    const questionsData = [{
+        "question": "Ar geriate karvių pieną?",
     }, {
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+        "question": "Ar valgote mėsą?",
     }, {
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+        "question": "Ar rūkote cigaretes?",
     }];
 
+    const [question, setQuestion] = React.useState(0);
+    const [progress, setProgress] = React.useState(1);
+
+    const useStyles = makeStyles({
+        question: {
+            textAlign: 'center',
+            marginTop: '12vh',
+            fontSize: '40px'
+        },
+        button: {
+            marginTop: '30px',
+            minHeight: '200px',
+            backgroundColor: '#fff',
+            fontSize: '30px'
+        }
+    });
+
+    const classes = useStyles();
+
+    const handleNext = () => (reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        const countQuestions = questionsData.length - 1;
+
+        if(question < countQuestions) {
+            setQuestion(question + 1)
+        } else {
+            alert('done');
+        }
+
+    };
 
     return (
-        <div className={"background"}>
+        <div>
             <Box justifyContent="center">
                 <LinearProgress variant="determinate" value={progress}/>
-                <h1 className={'question'}>Ar geriate karvių pieną?</h1>
+                <h1 className={classes.question}>{questionsData[question]['question']}</h1>
 
                 <Grid
                     container
@@ -32,10 +59,10 @@ function Questions() {
                     style={{minHeight: "60vh"}}
                 >
                     <Grid item xs={12} style={{padding: "0 10vh"}}>
-                        <Button className={"answer-button"} size={"large"} fullWidth={true} variant={"outlined"}
-                                color={"primary"}>TAIP</Button>
+                        <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
+                                color={"primary"} onClick={handleNext(this)}>TAIP</Button>
 
-                        <Button className={"answer-button"} size={"large"} fullWidth={true} variant={"outlined"}
+                        <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
                                 color={"primary"}>NE</Button>
                     </Grid>
                 </Grid>
@@ -46,17 +73,6 @@ function Questions() {
                 display: block;
                 margin: 0px;
                 background-color: #98FB98;
-            }
-            .question {
-                text-align: center;
-                margin-top: 12vh;
-                font-size: 40px;
-            }
-            
-            .answer-button {
-                margin-top: 30px!important;
-                min-height: 200px;
-                background-color: #fff!important;
             }
 		`}</style>
         </div>
