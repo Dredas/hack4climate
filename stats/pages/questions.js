@@ -1,6 +1,7 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
+import Router from "next/router";
 
 function Questions() {
     const questionsData = [{
@@ -13,6 +14,7 @@ function Questions() {
 
     const [question, setQuestion] = React.useState(0);
     const [progress, setProgress] = React.useState(1);
+    const [answers, setAnswers] = React.useState([]);
 
     const useStyles = makeStyles({
         question: {
@@ -30,20 +32,34 @@ function Questions() {
 
     const classes = useStyles();
 
-    const handleNext = () => (reason) => {
+    //Add answer data
+    const onAddItem = (answer) => {
+        const currentAnswers = answers;
+        currentAnswers.push(answer);
+
+        setAnswers(currentAnswers);
+    };
+
+    //Handle next click
+    const handleNext = () => (reason, answer) => {
         if (reason === 'clickaway') {
             return;
         }
 
         const countQuestions = questionsData.length;
 
-        if(question < countQuestions - 1) {
+        onAddItem(reason.currentTarget.value);
+
+        if (question < countQuestions - 1) {
             setQuestion(question + 1);
             setProgress((100 / countQuestions) * (question + 1));
         } else {
-            alert('done');
-        }
+            localStorage.setItem('answersData', answers);
 
+            Router.push({
+                pathname: '/planing',
+            });
+        }
     };
 
     return (
@@ -61,10 +77,10 @@ function Questions() {
                 >
                     <Grid item xs={12} style={{padding: "0 10vh"}}>
                         <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
-                                color={"primary"} onClick={handleNext(this)}>TAIP</Button>
+                                value={true} color={"primary"} onClick={handleNext(this)} >TAIP</Button>
 
                         <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
-                                color={"primary"}>NE</Button>
+                                value={false} color={"primary"} onClick={handleNext(this)}>NE</Button>
                     </Grid>
                 </Grid>
             </Box>
@@ -80,4 +96,4 @@ function Questions() {
     );
 }
 
-    export default Questions;
+export default Questions;
