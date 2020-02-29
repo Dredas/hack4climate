@@ -35,10 +35,11 @@ function Questions() {
             return;
         }
 
-        const countQuestions = questionsData.length - 1;
+        const countQuestions = questionsData.length;
 
-        if(question < countQuestions) {
-            setQuestion(question + 1)
+        if(question < countQuestions - 1) {
+            setQuestion(question + 1);
+            setProgress((100 / countQuestions) * (question + 1));
         } else {
             alert('done');
         }
