@@ -1,16 +1,28 @@
-import React from 'react'
+import React from "react";
+import Router from 'next/router'
 
-const App = () => (
-    <div className="loading">
-        <header className="loading-header">
-            <img className="loading-logo" src={require('../images/green.png')}/>
-            <p className="loading-text">
-                HACK4CLIMATE...
-            </p>
-        </header>
+class Hello extends React.Component {
+
+    componentDidMount(){
+        setTimeout(() => {
+            const {pathname} = Router;
+            if(pathname == '/' ){
+                Router.push('/questions')
+            }
+        }, 3000);
+    }
+
+    render() {
+        return <div className="loading">
+            <header className="loading-header">
+                <img className="loading-logo" src={require('../images/green.png')}/>
+                <p className="loading-text">
+                    HACK4CLIMATE...
+                </p>
+            </header>
 
 
-        <style jsx global>{`
+            <style jsx global>{`
             body {
                 display: block;
                 margin: 0px;
@@ -25,7 +37,7 @@ const App = () => (
             }
             
             .loading-header {
-              background-color: #282c34;
+              background-color: #008000;
               min-height: 100vh;
               display: flex;
               flex-direction: column;
@@ -55,7 +67,11 @@ const App = () => (
             }
 
 		`}</style>
-    </div>
-);
+        </div>;
+    }
+}
 
-export default App;
+export default Hello;
+
+
+// export default App;
