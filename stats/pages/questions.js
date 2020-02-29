@@ -38,7 +38,7 @@ function Questions() {
     //Add answer data
     const onAddItem = (answer) => {
         const currentAnswers = answers;
-        currentAnswers.push({ "id" : questionsData[question]['id'], "value" : answer});
+        currentAnswers.push({"id": questionsData[question]['id'], "value": answer});
 
         setAnswers(currentAnswers);
     };
@@ -69,6 +69,7 @@ function Questions() {
         <div>
             <Box justifyContent="center">
                 <LinearProgress variant="determinate" value={progress}/>
+
                 <h1 className={classes.question}>{questionsData[question]['question']}</h1>
 
                 <Grid
