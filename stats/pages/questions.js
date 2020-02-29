@@ -5,13 +5,13 @@ import Router from "next/router";
 
 function Questions() {
     const questionsData = [{
-        "id" : "pienas",
+        "id": "pienas",
         "question": "Ar geriate karvių pieną?",
     }, {
-        "id" : "mesa",
+        "id": "mesa",
         "question": "Ar valgote mėsą?",
     }, {
-        "id" : "cigaretes",
+        "id": "cigaretes",
         "question": "Ar rūkote cigaretes?",
     }];
 
@@ -38,7 +38,7 @@ function Questions() {
     //Add answer data
     const onAddItem = (answer) => {
         const currentAnswers = answers;
-        currentAnswers.push(answer);
+        currentAnswers.push({ "id" : questionsData[question]['id'], "value" : answer});
 
         setAnswers(currentAnswers);
     };
@@ -57,7 +57,7 @@ function Questions() {
             setQuestion(question + 1);
             setProgress((100 / countQuestions) * (question + 1));
         } else {
-            localStorage.setItem('answersData', answers);
+            localStorage.setItem('answersData', JSON.stringify(answers));
 
             Router.push({
                 pathname: '/shop',
@@ -80,7 +80,7 @@ function Questions() {
                 >
                     <Grid item xs={12} style={{padding: "0 10vh"}}>
                         <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
-                                value={true} color={"primary"} onClick={handleNext(this)} >TAIP</Button>
+                                value={true} color={"primary"} onClick={handleNext(this)}>TAIP</Button>
 
                         <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
                                 value={false} color={"primary"} onClick={handleNext(this)}>NE</Button>

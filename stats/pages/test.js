@@ -5,7 +5,9 @@ function Test() {
 
     const data = localStorage.getItem('answersData');
 
-    console.log(data);
+    if (data) {
+        console.log(JSON.parse(data));
+    }
 
     return (
         <div>
