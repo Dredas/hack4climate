@@ -5,10 +5,13 @@ import Router from "next/router";
 
 function Questions() {
     const questionsData = [{
+        "id" : "pienas",
         "question": "Ar geriate karvių pieną?",
     }, {
+        "id" : "mesa",
         "question": "Ar valgote mėsą?",
     }, {
+        "id" : "cigaretes",
         "question": "Ar rūkote cigaretes?",
     }];
 
