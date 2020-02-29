@@ -29,7 +29,11 @@ function Questions() {
             marginTop: '30px',
             minHeight: '200px',
             backgroundColor: '#fff',
-            fontSize: '30px'
+            '&:hover': {
+                background: "#fceda7",
+            },
+            fontSize: '30px',
+            fontWeight: "bold"
         }
     });
 
@@ -60,7 +64,7 @@ function Questions() {
             localStorage.setItem('answersData', JSON.stringify(answers));
 
             Router.push({
-                pathname: '/shop',
+                pathname: '/pools',
             });
         }
     };

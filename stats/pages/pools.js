@@ -60,6 +60,39 @@ export class MapContainer extends Component {
         return (
 
             <div>
+                <div style={{position: "absolute", left: "50%", top: "5%"}}>
+                    <div style={{
+                        position: "relative",
+                        zIndex: 10,
+                        left: "-50%",
+                        backgroundColor: "#fff",
+                        padding: "20px",
+                        fontSize: "25px",
+                        fontWeight: "bold",
+                        border: "2px solid red",
+                        borderRadius: "25px",
+                        textAlign: "center"
+                    }}>
+                        TAIP ATRODO {liters} litrai sunaudoto vandens
+                    </div>
+                </div>
+
+                <div style={{position: "absolute", left: "50%", bottom: "10%"}}>
+                    <div style={{
+                        position: "relative",
+                        zIndex: 10,
+                        left: "-50%",
+                        backgroundColor: "#fff",
+                        padding: "20px",
+                        fontSize: "25px",
+                        fontWeight: "bold",
+                        border: "2px solid red",
+                        borderRadius: "25px",
+                        textAlign: "center"
+                    }}>
+                        Šiam vandeniui sutalpinti reikia {pools} olimpinių baseinų
+                    </div>
+                </div>
                 <Map
                     style={{
                         minWidth: "200px",
@@ -68,7 +101,7 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     initialCenter={{
                         lat: startLat,
-                        lng: startLng
+                        lng: startLng + 0.004
                     }}
                     zoom={16}
                 >

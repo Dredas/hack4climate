@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Map, Polygon, GoogleApiWrapper} from "google-maps-react";
+import {makeStyles} from "@material-ui/core/styles";
 
 export class MapContainer extends Component {
 
@@ -21,6 +22,7 @@ export class MapContainer extends Component {
         });
     }
 
+
     render() {
         localStorage.setItem('co2', 11310);
 
@@ -29,8 +31,9 @@ export class MapContainer extends Component {
         const oneMeter = 0.0000156;
         const oneTreePerYear = 22;
         const treesInStadium = 300;
-
         const stadiums = Math.round(co2 / (treesInStadium * oneTreePerYear));
+
+        const allTrees = 300 * stadiums;
 
         const l = 105 * oneMeter;
         const h = 68 * oneMeter;
@@ -64,6 +67,39 @@ export class MapContainer extends Component {
         return (
 
             <div>
+                <div style={{position: "absolute", left: "50%", top: "5%"}}>
+                    <div style={{
+                        position: "relative",
+                        zIndex: 10,
+                        left: "-50%",
+                        backgroundColor: "#fff",
+                        padding: "20px",
+                        fontSize: "25px",
+                        fontWeight: "bold",
+                        border: "2px solid red",
+                        borderRadius: "25px",
+                        textAlign: "center"
+                    }}>
+                        TAIP ATRODO {co2} kg co2
+                    </div>
+                </div>
+
+                <div style={{position: "absolute", left: "50%", bottom: "10%"}}>
+                    <div style={{
+                        position: "relative",
+                        zIndex: 10,
+                        left: "-50%",
+                        backgroundColor: "#fff",
+                        padding: "20px",
+                        fontSize: "25px",
+                        fontWeight: "bold",
+                        border: "2px solid red",
+                        borderRadius: "25px",
+                        textAlign: "center"
+                    }}>
+                        Išvalyti šiam orui per metus reikia {stadiums} futbolo aikščių, kuriuose yra {allTrees} medžiai
+                    </div>
+                </div>
                 <Map
                     style={{
                         minWidth: "200px",
@@ -72,7 +108,7 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     initialCenter={{
                         lat: startLat,
-                        lng: startLng
+                        lng: startLng + 0.004
                     }}
                     zoom={16}
                 >
