@@ -57,7 +57,7 @@ function Questions() {
             localStorage.setItem('answersData', answers);
 
             Router.push({
-                pathname: '/planing',
+                pathname: '/shop',
             });
         }
     };
