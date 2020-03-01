@@ -49,14 +49,6 @@ function Shopping() {
 
     const classes = useStyles();
 
-    const items = [
-        {id: 'milk', value: 'Pienas'},
-        {id: 'pork', value: 'Mėsa'},
-        {id: 'cigarettes', value: 'Cigaretės'},
-    ];
-
-    localStorage.setItem('cart', JSON.stringify(items));
-
     const data = localStorage.getItem('cart');
     const parsedData = JSON.parse(data);
 

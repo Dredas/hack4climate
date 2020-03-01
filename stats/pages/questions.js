@@ -71,6 +71,14 @@ function Questions() {
         }
     };
 
+    const items = [
+        {id: 'milk', value: 'Pienas'},
+        {id: 'pork', value: 'Mėsa'},
+        {id: 'cigarettes', value: 'Cigaretės'},
+    ];
+
+    localStorage.setItem('cart', JSON.stringify(items));
+
     return (
         <div>
             <Fade in={true} timeout={3000}>

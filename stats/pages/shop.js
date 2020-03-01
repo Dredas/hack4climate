@@ -33,19 +33,34 @@ const Shop = () => {
         farmScale: ''
     });
 
+    const [sub, setSub] = useState({});
+
     const handleProductSubmit = e => {
         e.preventDefault();
 
         const {name, value} = e.target;
-        setProduct(prevState => ({...prevState, [name]: value}));
-        console.log(product);
+        setProduct({});
+
+        const data = localStorage.getItem('cart');
+        const parsedData = JSON.parse(data);
+
+        parsedData.push(sub);
+        localStorage.setItem('cart', JSON.stringify(parsedData));
+
+        console.log(parsedData);
     };
 
     const handleChange = e => {
-        e.preventDefault()
-        const {name, value} = e.target
+        e.preventDefault();
+        const {name, value} = e.target;
         setProduct(prevState => ({...prevState, [name]: value})
         )
+    };
+
+    const handleGroupChange = e => {
+        e.preventDefault();
+        const {value} = e.target;
+        setSub({"id": value, "value": value});
     };
 
     const additional = food.map((foodType) =>
@@ -53,11 +68,6 @@ const Shop = () => {
         foodType.name.map(selectOption => (
             <option className='simple-option' value={selectOption} key={selectOption}>{selectOption}</option>)
         ));
-
-    const info = () => {
-        console.log(additional);
-        console.log(product.genName);
-    }
 
     return (
         <div>
@@ -82,7 +92,7 @@ const Shop = () => {
                         <input className='main-input' type='text' placeholder='please type..' name='genName'
                                value={product.genName} onChange={handleChange}/>
                         <label className='select-label' htmlFor="group">please specify: </label>
-                        <select className='simple-select' id='group'>
+                        <select className='simple-select' id='group' onChange={handleGroupChange}>
                             {additional}
                         </select>
                         <p className='intro-radio'>Is this product local or imported?</p>
