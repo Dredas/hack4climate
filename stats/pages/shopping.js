@@ -55,19 +55,19 @@ function Shopping() {
         {id: 'cigaretes', value: 'Cigaretės'},
     ];
 
-    const [value, setValue] = React.useState(0);
-
     return (
         <div>
             <Toolbar style={{"background-color": "#fff"}}>
                 <Typography variant="h6" className={classes.title}>
                     Suplanuoti pirkiniai
                 </Typography>
-                <Link href="/shop" passHref>
-                    <IconButton edge="end" color="inherit">
-                        <AddIcon/>
-                    </IconButton>
-                </Link>
+                <div style={{marginLeft: 'auto', marginRight: -5}}>
+                    <Link href="/shop" passHref>
+                        <IconButton edge="end" color="inherit">
+                            <AddIcon/>
+                        </IconButton>
+                    </Link>
+                </div>
             </Toolbar>
 
             <List className={classes.root}>

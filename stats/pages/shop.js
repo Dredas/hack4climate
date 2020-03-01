@@ -17,7 +17,6 @@ const Shop = () => {
             genName: 'meat',
             name: ['pork', 'beaf', 'lamb', 'mix of (minced) meat']
         },
-        ,
         {
             genName: 'poultry',
             name: ['chicken', 'goose']
@@ -99,16 +98,15 @@ const Shop = () => {
                 body {
                     min-height: 100%;
                     display: block;
-                    margin: 20px;
                     height: 100%;
                     background-color: #98FB98;
                     background:linear-gradient(rgba(0, 128, 0, 0.8),transparent);
+                    margin: 0;
                 }
                 form {
                     width: 400px;
                     line-height: 2;
                     font-size: 20px;
-                    padding: 50px;
                 }
                 .intro-radio{
                     margin-bottom: 0;
