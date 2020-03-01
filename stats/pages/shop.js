@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import Router from 'next/router'
+import Fade from "@material-ui/core/Fade";
 
 const Shop = () => {
 
-    const food = [ 
+    const food = [
         {
             genName: 'milk',
             name: ['cow milk', 'lamb milk', 'goat milk', 'soya milk', 'almond milk', 'oat milk']
@@ -24,62 +25,69 @@ const Shop = () => {
     ];
 
 
-    const [product , setProduct] = useState({
+    const [product, setProduct] = useState({
         genName: '',
         name: '',
-        type:'',
-        origin:'',
+        type: '',
+        origin: '',
         farmScale: ''
     });
 
     const handleProductSubmit = e => {
         e.preventDefault();
-        const {name , value} = e.target;
-        setProduct ( prevState => ({...prevState, [name]: value }));
+        const {name, value} = e.target;
+        setProduct(prevState => ({...prevState, [name]: value}));
         Router.push({
             pathname: '/shopping',
         });
     };
 
-    const handleChange = e => { 
+    const handleChange = e => {
         e.preventDefault()
-        const {name , value} = e.target
-        setProduct ( prevState => ({...prevState, [name]: value })
-    )};
+        const {name, value} = e.target
+        setProduct(prevState => ({...prevState, [name]: value})
+        )
+    };
 
-    const additional = food.map((foodType) =>      
-        foodType.genName === product.genName && 
+    const additional = food.map((foodType) =>
+        foodType.genName === product.genName &&
         foodType.name.map(selectOption => (
-        <option className = 'simple-option' value={selectOption} key = {selectOption}>{selectOption}</option> )
-    ));
-    
+            <option className='simple-option' value={selectOption} key={selectOption}>{selectOption}</option>)
+        ));
+
     const info = () => {
         console.log(additional);
-        console.log(product.genName);        
+        console.log(product.genName);
     }
 
     return (
         <div>
-            <form className = 'shopping-form'onSubmit = {handleProductSubmit}>
-            <p className = 'intro-radio'>where will you do your shopping:</p>
-                <div className = 'radio-wrap'>
-                    <input type="radio" id="onePlace" name="origin" value="one place"
-                            checked/>
-                    <label for="onePlace">I will do all my shopping in one place</label>
-                </div>
-                <div className = 'radio-wrap'>
-                    <input type="radio" id="different" name="origin" value="different places"/>
-                    <label for="different">I will shop around different places</label>
-                </div>
-                <p className = 'input-label'>What will you buy?</p>
-                <input className = 'simple-input' type = 'text' placeholder = 'please type..' name = 'genName' value = {product.genName} onChange = {handleChange}/>                  
-                <label className = 'select-label'for="group">please specify: </label>
-                <select className = 'simple-select' id = 'group' >
-                    {additional}
-                </select>
-                <button className = 'simple-submit' type= 'submit'>Next</button>
-            </form>
-
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <form className='shopping-form' onSubmit={handleProductSubmit}>
+                    <p className='intro-radio'>where will you do your shopping:</p>
+                    <div className='radio-wrap'>
+                        <input type="radio" id="onePlace" name="origin" value="one place"
+                               checked/>
+                        <label for="onePlace">I will do all my shopping in one place</label>
+                    </div>
+                    <div className='radio-wrap'>
+                        <input type="radio" id="different" name="origin" value="different places"/>
+                        <label for="different">I will shop around different places</label>
+                    </div>
+                    <p className='input-label'>What will you buy?</p>
+                    <input className='simple-input' type='text' placeholder='please type..' name='genName'
+                           value={product.genName} onChange={handleChange}/>
+                    <label className='select-label' for="group">please specify: </label>
+                    <select className='simple-select' id='group'>
+                        {additional}
+                    </select>
+                    <button className='simple-submit' type='submit'>Next</button>
+                </form>
+            </div>
             <style jsx global>{`
                  html {
                     height: 100%;
@@ -98,7 +106,6 @@ const Shop = () => {
                     line-height: 2;
                     font-size: 20px;
                     padding: 50px;
-                    border-right: 1px solid lightgreen;
                 }
                 .intro-radio{
                     margin-bottom: 0;
@@ -150,7 +157,7 @@ const Shop = () => {
                     font-size: 20px;
                     vertical-align: center;
                 }
-		`}</style>    
+		`}</style>
         </div>
     )
 };
