@@ -50,10 +50,16 @@ function Shopping() {
     const classes = useStyles();
 
     const items = [
-        {id: 'pienas', value: 'Pienas'},
-        {id: 'mesa', value: 'Mėsa'},
-        {id: 'cigaretes', value: 'Cigaretės'},
+        {id: 'milk', value: 'Pienas'},
+        {id: 'pork', value: 'Mėsa'},
+        {id: 'cigarettes', value: 'Cigaretės'},
     ];
+
+    localStorage.setItem('cart', JSON.stringify(items));
+
+    const data = localStorage.getItem('cart');
+    const parsedData = JSON.parse(data);
+
 
     return (
         <div>
@@ -71,7 +77,7 @@ function Shopping() {
             </Toolbar>
 
             <List className={classes.root}>
-                {items.map(value => {
+                {parsedData.map(value => {
                     const labelId = `checkbox-list-label-${value['id']}`;
 
                     return (
