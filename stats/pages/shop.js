@@ -83,7 +83,7 @@ const Shop = () => {
                         <p className='main-input-label'>What will you buy?</p>
                         <input className='main-input' type='text' placeholder='please type..' name='genName'
                                value={product.genName} onChange={handleChange}/>
-                        <label className='select-label' htmlFor="group">please specify: </label>
+                        <label className='select-label' htmlFor="group">Please specify: </label>
                         <select className='simple-select' id='group'>
                             {additional}
                         </select>
@@ -126,9 +126,15 @@ const Shop = () => {
                 .intro-radio{
                     margin-bottom: 0;
                     font-weight: 600;
+                    font-size: 30px;
+                    margin-bottom: 20px;
                 }
                 .radio-wrap{
                     margin-top: 0px;
+                }
+                .radio-wrap label{
+                    font-weight: 600;
+                    font-size: 20px;
                 }
                 .choose{
                     height: 30px;
@@ -140,7 +146,7 @@ const Shop = () => {
                     font-size: 30px;
                 }
                 .main-input{
-                    width: 90%;
+                    width: 96%;
                     margin-bottom: 20px;
                     display: block;
                     line-height: 2.5;
@@ -150,7 +156,7 @@ const Shop = () => {
                 }
                 .simple-select{
                     padding-left: 10px;
-                    width: 93%;
+                    width: 98%;
                     height: 30px;
                     font-size: 18px;
                     border: 1px solid green;
@@ -158,6 +164,8 @@ const Shop = () => {
                 }
                 .select-label{
                     display: block;
+                    font-weight: 600;
+                    font-size: 20px;
                 }
                 .simple-option{
                     margin-bottom: 30px;
@@ -166,7 +174,7 @@ const Shop = () => {
                 .simple-submit{
                     background: green;
                     corner-radius:2;
-                    width: 93%;
+                    width: 99%;
                     height: 50px;
                     display: block;
                     margin-top: 40px;
@@ -178,7 +186,8 @@ const Shop = () => {
                     display: block;
                 }
                 .shopping-form {
-                        margin-top: 50px;
+                     margin-top: 50px;
+                     width: 80%;
                 }
 		`}</style>
         </div>
