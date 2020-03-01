@@ -28,17 +28,15 @@ const Shop = () => {
         genName: '',
         name: '',
         type: '',
+        typeOfShop: '',
         origin: '',
-        type:'',
-        typeOfShop:'',
-        origin:'',
         farmScale: ''
     });
 
     const handleProductSubmit = e => {
         e.preventDefault();
-        const {name , value} = e.target;
-        setProduct ( prevState => ({...prevState, [name]: value }));
+        const {name, value} = e.target;
+        setProduct(prevState => ({...prevState, [name]: value}));
         console.log(product);
         // Router.push({
         //     pathname: '/shopping',
@@ -65,39 +63,46 @@ const Shop = () => {
 
     return (
         <div>
-            <Fade in={true} timeout={3000}>
-                <form className='shopping-form' onSubmit={handleProductSubmit}>
-                    <p className='intro-radio'>Where will you do your shopping:</p>
-                    <div className='radio-wrap'>
-                        <input type="radio" id="onePlace" name="origin" value="one place"/>
-                        <label htmlFor="onePlace">I will do all my shopping in one place</label>
-                    </div>
-                    <div className='radio-wrap'>
-                        <input className='radio-input' type="radio" id="different" name="typeOfShop"
-                               value="different places"/>
-                        <label htmlFor="different">I will shop around different places</label>
-                    </div>
-                    <p className='main-input-label'>What will you buy?</p>
-                    <input className='main-input' type='text' placeholder='please type..' name='genName'
-                           value={product.genName} onChange={handleChange}/>
-                    <label className='select-label' htmlFor="group">please specify: </label>
-                    <select className='simple-select' id='group'>
-                        {additional}
-                    </select>
-                    <p className='intro-radio'>Is this product local or imported?</p>
-                    <div className='radio-wrap'>
-                        <div className='radio-input'>
-                            <input type="radio" id="originLocal" name="origin" value="local"/>
-                            <label htmlFor="originLocal">This product is local</label>
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Fade in={true} timeout={3000}>
+                    <form className='shopping-form' onSubmit={handleProductSubmit}>
+                        <p className='intro-radio'>Where will you do your shopping:</p>
+                        <div className='radio-wrap'>
+                            <input type="radio" id="onePlace" name="origin" value="one place"/>
+                            <label htmlFor="onePlace">I will do all my shopping in one place</label>
                         </div>
-                        <div className='radio-input'>
-                            <input type="radio" id="originImport" name="origin" value="imported"/>
-                            <label htmlFor="originLocal">This product is imported</label>
+                        <div className='radio-wrap'>
+                            <input className='radio-input' type="radio" id="different" name="typeOfShop"
+                                   value="different places"/>
+                            <label htmlFor="different">I will shop around different places</label>
                         </div>
-                    </div>
-                    <button className='simple-submit' type='submit'>Next</button>
-                </form>
-            </Fade>
+                        <p className='main-input-label'>What will you buy?</p>
+                        <input className='main-input' type='text' placeholder='please type..' name='genName'
+                               value={product.genName} onChange={handleChange}/>
+                        <label className='select-label' htmlFor="group">please specify: </label>
+                        <select className='simple-select' id='group'>
+                            {additional}
+                        </select>
+                        <p className='intro-radio'>Is this product local or imported?</p>
+                        <div className='radio-wrap'>
+                            <div className='radio-input'>
+                                <input type="radio" id="originLocal" name="origin" value="local"/>
+                                <label htmlFor="originLocal">This product is local</label>
+                            </div>
+                            <div className='radio-input'>
+                                <input type="radio" id="originImport" name="origin" value="imported"/>
+                                <label htmlFor="originLocal">This product is imported</label>
+                            </div>
+                        </div>
+                        <button className='simple-submit' type='submit'>Next</button>
+                    </form>
+                </Fade>
+            </div>
+
             <style jsx global>{`
                 html {
                     height: 100%;
@@ -171,6 +176,9 @@ const Shop = () => {
                 }
                 .imput-radio{
                     display: block;
+                }
+                .shopping-form {
+                        margin-top: 50px;
                 }
 		`}</style>
         </div>
