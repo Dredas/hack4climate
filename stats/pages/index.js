@@ -9,7 +9,7 @@ class Hello extends React.Component {
             if(pathname == '/' ){
                 Router.push('/questions')
             }
-        }, 3000);
+        }, 5000);
     }
 
     render() {
@@ -48,7 +48,9 @@ class Hello extends React.Component {
             }
             
             .loading-text {
-                margin-top: 60px;
+                margin-top: 80px;
+                font-weight: bold;
+                font-size: 40px;
             }
             
             @keyframes loading-logo-spin {

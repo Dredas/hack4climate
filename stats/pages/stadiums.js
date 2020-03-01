@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Map, Polygon, GoogleApiWrapper} from "google-maps-react";
-import {makeStyles} from "@material-ui/core/styles";
+import Link from "next/link";
+import {Button} from "@material-ui/core";
 
 export class MapContainer extends Component {
 
@@ -24,7 +25,7 @@ export class MapContainer extends Component {
 
 
     render() {
-        localStorage.setItem('co2', 11310);
+        localStorage.setItem('co2', 113100);
 
         const co2 = localStorage.getItem('co2');
 
@@ -38,8 +39,8 @@ export class MapContainer extends Component {
         const l = 105 * oneMeter;
         const h = 68 * oneMeter;
 
-        const startLat = 54.69386;
-        const startLng = 25.27532;
+        const startLat = 54.6806;
+        const startLng = 25.2851;
 
         const polygons = [];
 
@@ -73,7 +74,7 @@ export class MapContainer extends Component {
                         zIndex: 10,
                         left: "-50%",
                         backgroundColor: "#fff",
-                        padding: "20px",
+                        padding: "5px",
                         fontSize: "25px",
                         fontWeight: "bold",
                         border: "2px solid red",
@@ -90,7 +91,7 @@ export class MapContainer extends Component {
                         zIndex: 10,
                         left: "-50%",
                         backgroundColor: "#fff",
-                        padding: "20px",
+                        padding: "5px",
                         fontSize: "25px",
                         fontWeight: "bold",
                         border: "2px solid red",
@@ -100,6 +101,27 @@ export class MapContainer extends Component {
                         Išvalyti šiam orui per metus reikia {stadiums} futbolo aikščių, kuriuose yra {allTrees} medžiai
                     </div>
                 </div>
+
+                <Button className={"slide-button"} style={{
+                    position: "absolute",
+                    zIndex: 10,
+                    right: "1%",
+                    bottom: "1%",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                }} disabled={true} variant="contained">Toliau</Button>
+
+                <Link href="/pools" passHref>
+                    <Button className={"slide-button"} style={{
+                        position: "absolute",
+                        zIndex: 10,
+                        left: "1%",
+                        bottom: "1%",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                    }} variant="contained">Atgal</Button>
+                </Link>
+
                 <Map
                     style={{
                         minWidth: "200px",
@@ -121,10 +143,9 @@ export class MapContainer extends Component {
                                 strokeOpacity={0.8}
                                 strokeWeight={2}
                                 fillColor="#006400"
-                                fillOpacity={0.35}/>
+                                fillOpacity={0.5}/>
                         )
                     })}
-
 
                 </Map>
 

@@ -2,6 +2,7 @@ import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
 import Router from "next/router";
+import Fade from '@material-ui/core/Fade';
 
 function Questions() {
     const questionsData = [{
@@ -23,7 +24,8 @@ function Questions() {
         question: {
             textAlign: 'center',
             marginTop: '12vh',
-            fontSize: '40px'
+            fontSize: '40px',
+            color: '#fff'
         },
         button: {
             marginTop: '30px',
@@ -64,41 +66,50 @@ function Questions() {
             localStorage.setItem('answersData', JSON.stringify(answers));
 
             Router.push({
-                pathname: '/pools',
+                pathname: '/shopping',
             });
         }
     };
 
     return (
         <div>
-            <Box justifyContent="center">
-                <LinearProgress variant="determinate" value={progress}/>
+            <Fade in={true} timeout={3000}>
+                <Box justifyContent="center">
+                    <LinearProgress variant="determinate" value={progress}/>
 
-                <h1 className={classes.question}>{questionsData[question]['question']}</h1>
+                    <h1 className={classes.question}>{questionsData[question]['question']}</h1>
 
-                <Grid
-                    container
-                    spacing={0}
-                    alignItems="center"
-                    justify="center"
-                    style={{minHeight: "60vh"}}
-                >
-                    <Grid item xs={12} style={{padding: "0 10vh"}}>
-                        <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
-                                value={true} color={"primary"} onClick={handleNext(this)}>TAIP</Button>
+                    <Grid
+                        container
+                        spacing={0}
+                        alignItems="center"
+                        justify="center"
+                        style={{minHeight: "60vh"}}
+                    >
+                        <Grid item xs={12} style={{padding: "0 10vh"}}>
+                            <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
+                                    value={true} color={"primary"} onClick={handleNext(this)}>TAIP</Button>
 
-                        <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
-                                value={false} color={"primary"} onClick={handleNext(this)}>NE</Button>
+                            <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
+                                    value={false} color={"primary"} onClick={handleNext(this)}>NE</Button>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
+                </Box>
+            </Fade>
 
             <style jsx global>{`
-            body {
-                display: block;
-                margin: 0px;
-                background-color: #98FB98;
-            }
+                html {
+                    height: 100%;
+                }
+    
+                body {
+                    min-height: 100%;
+                    display: block;
+                    margin: 20px;
+                    height: 100%;
+                    background-color: #98FB98;
+                    background:linear-gradient(rgba(0, 128, 0, 0.8),transparent);
+                }
 		`}</style>
         </div>
     );

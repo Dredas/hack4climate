@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {Map, Polygon, GoogleApiWrapper} from "google-maps-react";
+import {Button} from '@material-ui/core';
+import Link from "next/link";
 
 export class MapContainer extends Component {
 
@@ -31,8 +33,8 @@ export class MapContainer extends Component {
 
         const twentyFiveMeters = 0.00039;
 
-        const startLat = 54.69386;
-        const startLng = 25.27532;
+        const startLat = 54.6806;
+        const startLng = 25.2851;
 
         const polygons = [];
 
@@ -66,7 +68,7 @@ export class MapContainer extends Component {
                         zIndex: 10,
                         left: "-50%",
                         backgroundColor: "#fff",
-                        padding: "20px",
+                        padding: "5px",
                         fontSize: "25px",
                         fontWeight: "bold",
                         border: "2px solid red",
@@ -83,7 +85,7 @@ export class MapContainer extends Component {
                         zIndex: 10,
                         left: "-50%",
                         backgroundColor: "#fff",
-                        padding: "20px",
+                        padding: "5px",
                         fontSize: "25px",
                         fontWeight: "bold",
                         border: "2px solid red",
@@ -93,6 +95,27 @@ export class MapContainer extends Component {
                         Šiam vandeniui sutalpinti reikia {pools} olimpinių baseinų
                     </div>
                 </div>
+
+                <Link href="/stadiums" passHref>
+                    <Button style={{
+                        position: "absolute",
+                        zIndex: 10,
+                        right: "1%",
+                        bottom: "1%",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                    }} variant="contained">Toliau</Button>
+                </Link>
+
+                <Button style={{
+                    position: "absolute",
+                    zIndex: 10,
+                    left: "1%",
+                    bottom: "1%",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                }} disabled={true} variant="contained">Atgal</Button>
+
                 <Map
                     style={{
                         minWidth: "200px",
@@ -114,12 +137,13 @@ export class MapContainer extends Component {
                                 strokeOpacity={0.8}
                                 strokeWeight={2}
                                 fillColor="#0000FF"
-                                fillOpacity={0.35}/>
+                                fillOpacity={0.5}/>
                         )
                     })}
 
 
                 </Map>
+
 
                 <style jsx global>{`
                 body {
