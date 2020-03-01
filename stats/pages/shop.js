@@ -96,7 +96,7 @@ const Shop = () => {
                                 <label htmlFor="originLocal">This product is imported</label>
                             </div>
                         </div>
-                        <button className='simple-submit' type='button' onClick = {setProduct({genName: '',  name: '', type:'', typeOfShop:'', origin:'', farmScale: ''})}>Add new product </button>
+                        <button className='simple-submit' type='submit'>Add new product</button>
                         <Link href="/shopping" passHref>
                             <button className='simple-submit' type='button'>Go to cart</button>
                         </Link>
