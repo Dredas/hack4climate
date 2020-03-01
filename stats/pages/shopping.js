@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import NavigateNext from '@material-ui/icons/NavigateNext';
@@ -62,6 +63,11 @@ function Shopping() {
                 <Typography variant="h6" className={classes.title}>
                     Suplanuoti pirkiniai
                 </Typography>
+                <Link href="/shop" passHref>
+                    <IconButton edge="end" color="inherit">
+                        <AddIcon/>
+                    </IconButton>
+                </Link>
             </Toolbar>
 
             <List className={classes.root}>

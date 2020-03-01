@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import Router from 'next/router'
 
 const Shop = () => {
 
@@ -33,10 +33,13 @@ const Shop = () => {
     });
 
     const handleProductSubmit = e => {
-        e.preventDefault()
-        const {name , value} = e.target
-        setProduct ( prevState => ({...prevState, [name]: value })
-    )};
+        e.preventDefault();
+        const {name , value} = e.target;
+        setProduct ( prevState => ({...prevState, [name]: value }));
+        Router.push({
+            pathname: '/shopping',
+        });
+    };
 
     const handleChange = e => { 
         e.preventDefault()
@@ -58,7 +61,7 @@ const Shop = () => {
     return (
         <div>
             <form className = 'shopping-form'onSubmit = {handleProductSubmit}>
-            <p className = 'intro-radio'>where will you do you do your shopping:</p>
+            <p className = 'intro-radio'>where will you do your shopping:</p>
                 <div className = 'radio-wrap'>
                     <input type="radio" id="onePlace" name="origin" value="one place"
                             checked/>
@@ -77,7 +80,19 @@ const Shop = () => {
                 <button className = 'simple-submit' type= 'submit'>Next</button>
             </form>
 
-            <style jsx>{`
+            <style jsx global>{`
+                 html {
+                    height: 100%;
+                }
+    
+                body {
+                    min-height: 100%;
+                    display: block;
+                    margin: 20px;
+                    height: 100%;
+                    background-color: #98FB98;
+                    background:linear-gradient(rgba(0, 128, 0, 0.8),transparent);
+                }
                 form {
                     width: 400px;
                     line-height: 2;
