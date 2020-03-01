@@ -1,66 +1,118 @@
-import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
 import React from "react";
+import {makeStyles} from '@material-ui/core/styles';
+import {LinearProgress, Button, Box, Grid} from '@material-ui/core';
+import Router from "next/router";
+import Fade from '@material-ui/core/Fade';
 
 function Questions() {
-    const [question, setQuestion] = React.useState(1);
-    const [progress, setProgress] = React.useState(1);
-
-
-    var data = [{
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+    const questionsData = [{
+        "id": "pienas",
+        "question": "Ar geriate karvių pieną?",
     }, {
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+        "id": "mesa",
+        "question": "Ar valgote mėsą?",
     }, {
-        "id": "1",
-        "task": "Ar geriate karvių pieną?",
+        "id": "cigaretes",
+        "question": "Ar rūkote cigaretes?",
     }];
 
+    const [question, setQuestion] = React.useState(0);
+    const [progress, setProgress] = React.useState(1);
+    const [answers, setAnswers] = React.useState([]);
+
+    const useStyles = makeStyles({
+        question: {
+            textAlign: 'center',
+            marginTop: '12vh',
+            fontSize: '40px',
+            color: '#fff'
+        },
+        button: {
+            marginTop: '30px',
+            minHeight: '200px',
+            backgroundColor: '#fff',
+            '&:hover': {
+                background: "#fceda7",
+            },
+            fontSize: '30px',
+            fontWeight: "bold"
+        }
+    });
+
+    const classes = useStyles();
+
+    //Add answer data
+    const onAddItem = (answer) => {
+        const currentAnswers = answers;
+        currentAnswers.push({"id": questionsData[question]['id'], "value": answer});
+
+        setAnswers(currentAnswers);
+    };
+
+    //Handle next click
+    const handleNext = () => (reason, answer) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        const countQuestions = questionsData.length;
+
+        onAddItem(reason.currentTarget.value);
+
+        if (question < countQuestions - 1) {
+            setQuestion(question + 1);
+            setProgress((100 / countQuestions) * (question + 1));
+        } else {
+            localStorage.setItem('answersData', JSON.stringify(answers));
+
+            Router.push({
+                pathname: '/shopping',
+            });
+        }
+    };
 
     return (
-        <div className={"background"}>
-            <Box justifyContent="center">
-                <LinearProgress variant="determinate" value={progress}/>
-                <h1 className={'question'}>Ar geriate karvių pieną?</h1>
+        <div>
+            <Fade in={true} timeout={3000}>
+                <Box justifyContent="center">
+                    <LinearProgress variant="determinate" value={progress}/>
 
-                <Grid
-                    container
-                    spacing={0}
-                    alignItems="center"
-                    justify="center"
-                    style={{minHeight: "60vh"}}
-                >
-                    <Grid item xs={12} style={{padding: "0 10vh"}}>
-                        <Button className={"answer-button"} size={"large"} fullWidth={true} variant={"outlined"}
-                                color={"primary"}>TAIP</Button>
+                    <h1 className={classes.question}>{questionsData[question]['question']}</h1>
 
-                        <Button className={"answer-button"} size={"large"} fullWidth={true} variant={"outlined"}
-                                color={"primary"}>NE</Button>
+                    <Grid
+                        container
+                        spacing={0}
+                        alignItems="center"
+                        justify="center"
+                        style={{minHeight: "60vh"}}
+                    >
+                        <Grid item xs={12} style={{padding: "0 10vh"}}>
+                            <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
+                                    value={true} color={"primary"} onClick={handleNext(this)}>TAIP</Button>
+
+                            <Button className={classes.button} size={"large"} fullWidth={true} variant={"outlined"}
+                                    value={false} color={"primary"} onClick={handleNext(this)}>NE</Button>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
+                </Box>
+            </Fade>
 
             <style jsx global>{`
-            body {
-                display: block;
-                margin: 0px;
-                background-color: #98FB98;
-            }
-            .question {
-                text-align: center;
-                margin-top: 12vh;
-                font-size: 40px;
-            }
-            
-            .answer-button {
-                margin-top: 30px!important;
-                min-height: 200px;
-                background-color: #fff!important;
-            }
+                html {
+                    height: 100%;
+                }
+    
+                body {
+                    min-height: 100%;
+                    display: block;
+                    margin: 20px;
+                    height: 100%;
+                    background-color: #98FB98;
+                    background:linear-gradient(rgba(0, 128, 0, 0.8),transparent);
+                }
 		`}</style>
         </div>
     );
 }
 
-    export default Questions;
+export default Questions;
