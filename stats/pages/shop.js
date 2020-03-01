@@ -7,7 +7,7 @@ const Shop = () => {
     const food = [
         {
             genName: 'milk',
-            name: ['cow milk', 'lamb milk', 'goat milk', 'soya milk', 'almond milk', 'oat milk']
+            name: ['Cow milk', 'Lamb milk', 'Goat milk', 'Soya milk', 'Almond milk', 'Oat milk']
         },
         {
             genName: 'bread',

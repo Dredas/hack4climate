@@ -25,7 +25,7 @@ export class MapContainer extends Component {
 
 
     render() {
-        localStorage.setItem('co2', 113100);
+        //localStorage.setItem('co2', 113100);
 
         const co2 = localStorage.getItem('co2');
 

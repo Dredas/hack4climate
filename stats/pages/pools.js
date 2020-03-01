@@ -24,7 +24,7 @@ export class MapContainer extends Component {
     }
 
     render() {
-        localStorage.setItem('liters', 50000000);
+        //localStorage.setItem('liters', 50000000);
 
         const liters = localStorage.getItem('liters');
         const pollLiters = 2500000;

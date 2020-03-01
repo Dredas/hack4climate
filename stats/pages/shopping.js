@@ -31,7 +31,35 @@ function Shopping() {
         }
 
         setChecked(newChecked);
-        console.log(newChecked);
+
+        var years = 10;
+        var co2 = 0;
+        var water = 0;
+
+        newChecked.map(function(item) {
+            if(item == 'cigaretes') {
+                co2 = co2 + (3.1 * 365 * years);
+                water = water + (150 * 365 * years);
+            }
+
+            if(item == 'pork') {
+                co2 = co2 + (3.1 * 365 * years);
+                water = water + (3000 * 365 * years);
+            }
+
+            if(item == 'milk') {
+                co2 = co2 + (3.1 * 365 * years);
+                water = water + (655 * 365 * years);
+            }
+
+            if(item == 'Lamb milk') {
+                co2 = co2 + (3.1 * 365 * years);
+                water = water + (655 * 365 * years);
+            }
+        });
+
+        localStorage.setItem('liters', water);
+        localStorage.setItem('co2', co2);
     };
 
     const useStyles = makeStyles({
@@ -51,7 +79,6 @@ function Shopping() {
 
     const data = localStorage.getItem('cart');
     const parsedData = JSON.parse(data);
-
 
     return (
         <div>
