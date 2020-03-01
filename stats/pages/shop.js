@@ -28,6 +28,7 @@ const Shop = () => {
         genName: '',
         name: '',
         type:'',
+        typeOfShop:'',
         origin:'',
         farmScale: ''
     });
@@ -61,34 +62,44 @@ const Shop = () => {
     return (
         <div>
             <form className = 'shopping-form'onSubmit = {handleProductSubmit}>
-            <p className = 'intro-radio'>where will you do your shopping:</p>
+            <p className = 'intro-radio'>Where will you do your shopping:</p>
                 <div className = 'radio-wrap'>
-                    <input type="radio" id="onePlace" name="origin" value="one place"
-                            checked/>
+                    <input type="radio" id="onePlace" name="origin" value="one place" checked/>
                     <label for="onePlace">I will do all my shopping in one place</label>
                 </div>
                 <div className = 'radio-wrap'>
-                    <input type="radio" id="different" name="origin" value="different places"/>
+                    <input className = 'radio-input' type="radio" id="different" name="typeOfShop" value="different places"/>
                     <label for="different">I will shop around different places</label>
                 </div>
-                <p className = 'input-label'>What will you buy?</p>
-                <input className = 'simple-input' type = 'text' placeholder = 'please type..' name = 'genName' value = {product.genName} onChange = {handleChange}/>                  
+                <p className = 'main-input-label'>What will you buy?</p>
+                <input className = 'main-input' type = 'text' placeholder = 'please type..' name = 'genName' value = {product.genName} onChange = {handleChange}/>                  
                 <label className = 'select-label'for="group">please specify: </label>
                 <select className = 'simple-select' id = 'group' >
                     {additional}
-                </select>
+                </select>                
+                <p className = 'intro-radio'>Is this product local or imported?</p>
+                <div className = 'radio-wrap'>
+                    <div className = 'radio-input'>
+                        <input type="radio" id="originLocal" name="origin" value="local" checked/>
+                        <label for="originLocal">This product is local</label>
+                    </div>
+                    <div className = 'radio-input'>
+                        <input type="radio" id="originImport" name="origin" value="imported" checked/>
+                        <label for="originLocal">This product is imported</label>
+                    </div>
+                </div>
                 <button className = 'simple-submit' type= 'submit'>Next</button>
             </form>
 
             <style jsx global>{`
-                 html {
+                html {
                     height: 100%;
                 }
     
                 body {
                     min-height: 100%;
                     display: block;
-                    margin: 20px;
+                    // margin: 20px;
                     height: 100%;
                     background-color: #98FB98;
                     background:linear-gradient(rgba(0, 128, 0, 0.8),transparent);
@@ -97,31 +108,32 @@ const Shop = () => {
                     width: 400px;
                     line-height: 2;
                     font-size: 20px;
-                    padding: 50px;
-                    border-right: 1px solid lightgreen;
+                    padding: 10px;
+                    margin: auto;
                 }
                 .intro-radio{
                     margin-bottom: 0;
+                    font-weight: 600;
                 }
                 .radio-wrap{
                     margin-top: 0px;
                 }
                 .choose{
-                    height: 40px;
+                    height: 30px;
                 }
-                .input-label{
-                    margin-top: 30px;
+                .main-input-label{
+                    margin: 20px 0 0 0;
                     font-weight: 900;
                     display: block;
                     font-size: 30px;
                 }
-                .simple-input{
+                .main-input{
                     width: 90%;
                     margin-bottom: 20px;
                     display: block;
                     line-height: 2.5;
                     border: 1px solid green;
-                    font-size: 24px;
+                    font-size: 20px;
                     padding-left: 10px;
                 }
                 .simple-select{
@@ -136,7 +148,7 @@ const Shop = () => {
                     display: block;
                 }
                 .simple-option{
-                    margin-bottom: 50px;
+                    margin-bottom: 30px;
                     font-size: 18px;
                 }
                 .simple-submit{
@@ -145,10 +157,13 @@ const Shop = () => {
                     width: 93%;
                     height: 50px;
                     display: block;
-                    margin-top: 60px;
+                    margin-top: 40px;
                     color: white;
                     font-size: 20px;
                     vertical-align: center;
+                }
+                .imput-radio{
+                    display: block;
                 }
 		`}</style>    
         </div>
