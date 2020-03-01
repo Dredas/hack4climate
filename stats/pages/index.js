@@ -17,7 +17,11 @@ class Hello extends React.Component {
             <header className="loading-header">
                 <img className="loading-logo" src={require('../images/green.png')}/>
                 <p className="loading-text">
-                    HACK4CLIMATE...
+                    Habitainable...
+                </p>
+
+                <p className="loading-description">
+                    HACK4CLIMATE
                 </p>
             </header>
 
@@ -51,6 +55,12 @@ class Hello extends React.Component {
                 margin-top: 80px;
                 font-weight: bold;
                 font-size: 40px;
+            }
+            
+            .loading-description {
+                margin-top: 20px;
+                font-weight: bold;
+                font-size: 30px;
             }
             
             @keyframes loading-logo-spin {

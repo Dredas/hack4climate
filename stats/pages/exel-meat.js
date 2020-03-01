@@ -34,13 +34,14 @@ export default function Exel(props) {
 
     return (
         <div>
-
             <Toolbar style={{"background-color": "#fff"}}>
                 <Typography variant="h6">
-                    Rinkitės kitokį pieną (sunaudotas vanduo)
+                    Rinkitės augalinius baltymus (sunaudotas vanduo)
                 </Typography>
             </Toolbar>
+
             <Fade in={true} timeout={3000}>
+
                 <div style={{
                     display: "flex",
                     justifyContent: "center",
@@ -54,12 +55,12 @@ export default function Exel(props) {
                         <YAxis/>
                         <VerticalBarSeries
                             data={[
-                                {x: 'Karvių', y: 650},
-                                {x: 'Augalinis', y: 10},
+                                {x: 'Jautiena', y: 15415},
+                                {x: 'Lešiai', y: 1896},
                             ]}
                         />
                     </FlexibleXYPlot>
-                    <Link href="/exel-meat" passHref>
+                    <Link href="/exel-smoke" passHref>
                         <BottomNavigation
                             showLabels
                             className={classes.stickToBottom}
@@ -69,6 +70,7 @@ export default function Exel(props) {
                     </Link>
                 </div>
             </Fade>
+
             <style jsx global>{`
                 html {
                     height: 100%;

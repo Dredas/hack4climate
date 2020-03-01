@@ -17,7 +17,7 @@ import Link from "next/link";
 
 
 function Shopping() {
-    const [checked, setChecked] = React.useState([0]);
+    const [checked, setChecked] = React.useState([]);
 
     const handleToggle = value => () => {
         const currentIndex = checked.indexOf(value);
@@ -30,6 +30,7 @@ function Shopping() {
         }
 
         setChecked(newChecked);
+        console.log(newChecked);
     };
 
     const useStyles = makeStyles({
@@ -94,10 +95,6 @@ function Shopping() {
 
             <Link href="/pools" passHref>
                 <BottomNavigation
-                    value={value}
-                    onChange={(event, newValue) => {
-                        setValue(newValue);
-                    }}
                     showLabels
                     className={classes.stickToBottom}
                 >
