@@ -38,9 +38,21 @@ const Shop = () => {
         const {name , value} = e.target;
         setProduct ( prevState => ({...prevState, [name]: value }));
         console.log(product);
-        // Router.push({
-        //     pathname: '/shopping',
-        // });
+
+    const goNext = e => {
+            Router.push({
+            pathname: '/shopping',
+        });
+    };
+
+        const [product , setProduct] = useState({
+            genName: '',
+            name: '',
+            type:'',
+            typeOfShop:'',
+            origin:'',
+            farmScale: ''
+        });
     };
 
     const handleChange = e => { 
@@ -89,7 +101,13 @@ const Shop = () => {
                         <label htmlFor="originLocal">This product is imported</label>
                     </div>
                 </div>
-                <button className = 'simple-submit' type= 'submit'>Next</button>
+                <button className = 'simple-submit' type= 'submit'>confirm</button>
+            
+                <button className = 'simple-submit' type= 'button' onClick = {setProduct({genName: '',  name: '', type:'', typeOfShop:'', origin:'', farmScale: ''})}>add new product</button>
+                <button className = 'simple-submit' type= 'button' onClick = {goNext} >go to cart</button>
+
+              
+
             </form>
 
             <style jsx global>{`
