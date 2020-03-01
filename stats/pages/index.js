@@ -17,7 +17,7 @@ class Hello extends React.Component {
             <header className="loading-header">
                 <img className="loading-logo" src={require('../images/green.png')}/>
                 <p className="loading-text">
-                    Habitainable...
+                    Habitanable...
                 </p>
 
                 <p className="loading-description">
