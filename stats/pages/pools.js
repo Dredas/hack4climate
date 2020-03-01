@@ -149,7 +149,6 @@ export class MapContainer extends Component {
                 body {
                     display: block;
                     margin: 0px;
-                    background-color: #98FB98;
                 }
 	    	    `}</style>
             </div>

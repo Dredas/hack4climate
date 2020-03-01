@@ -102,14 +102,16 @@ export class MapContainer extends Component {
                     </div>
                 </div>
 
-                <Button className={"slide-button"} style={{
-                    position: "absolute",
-                    zIndex: 10,
-                    right: "1%",
-                    bottom: "1%",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                }} disabled={true} variant="contained">Toliau</Button>
+                <Link href="/exel" passHref>
+                    <Button className={"slide-button"} style={{
+                        position: "absolute",
+                        zIndex: 10,
+                        right: "1%",
+                        bottom: "1%",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                    }} variant="contained">Toliau</Button>
+                </Link>
 
                 <Link href="/pools" passHref>
                     <Button className={"slide-button"} style={{
@@ -153,7 +155,6 @@ export class MapContainer extends Component {
                 body {
                     display: block;
                     margin: 0px;
-                    background-color: #98FB98;
                 }
 	    	    `}</style>
             </div>

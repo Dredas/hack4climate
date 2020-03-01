@@ -31,6 +31,7 @@ function Shopping() {
 
         setChecked(newChecked);
     };
+
     const useStyles = makeStyles({
         question: {
             textAlign: 'center',
@@ -44,13 +45,13 @@ function Shopping() {
         },
     });
 
+    const classes = useStyles();
+
     const items = [
         {id: 'pienas', value: 'Pienas'},
         {id: 'mesa', value: 'Mėsa'},
         {id: 'cigaretes', value: 'Cigaretės'},
     ];
-
-    const classes = useStyles();
 
     const [value, setValue] = React.useState(0);
 
@@ -64,7 +65,7 @@ function Shopping() {
 
             <List className={classes.root}>
                 {items.map(value => {
-                    const labelId = `checkbox-list-label-${value}`;
+                    const labelId = `checkbox-list-label-${value['id']}`;
 
                     return (
                         <ListItem key={value} role={undefined} dense button onClick={handleToggle(value['id'])}>
