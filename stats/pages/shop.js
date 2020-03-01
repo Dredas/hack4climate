@@ -67,6 +67,8 @@ const Shop = () => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
+                <Fade in={true} timeout={3000}>
+
                 <form className='shopping-form' onSubmit={handleProductSubmit}>
                     <p className='intro-radio'>where will you do your shopping:</p>
                     <div className='radio-wrap'>
@@ -87,6 +89,7 @@ const Shop = () => {
                     </select>
                     <button className='simple-submit' type='submit'>Next</button>
                 </form>
+                </Fade>
             </div>
             <style jsx global>{`
                  html {
